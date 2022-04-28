@@ -6,7 +6,7 @@ import (
 
 func Printalphabet(){
 	for c := 'a'; c <= 'z'; c++ {
-		ft.PrintRune(rune(c))
+		ft.PrintRune(c)
 	}
-	ft.PrintRune(rune('\n'))
+	ft.PrintRune('\n')
 }

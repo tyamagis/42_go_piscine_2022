@@ -6,7 +6,7 @@ import (
 
 func PrintReverseAlphabet(){
 	for c := 'z'; c >= 'a'; c-- {
-		ft.PrintRune(rune(c))
+		ft.PrintRune(c)
 	}
-	ft.PrintRune(rune('\n'))
+	ft.PrintRune('\n')
 }

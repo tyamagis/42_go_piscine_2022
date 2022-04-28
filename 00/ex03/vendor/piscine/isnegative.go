@@ -4,9 +4,9 @@ import "ft"
 
 func IsNegative(nb int){
 	if nb < 0 {
-		ft.PrintRune(rune('F'))
+		ft.PrintRune('T')
 	} else {
-		ft.PrintRune(rune('T'))
+		ft.PrintRune('F')
 	}
-	ft.PrintRune(rune('\n'))
+	ft.PrintRune('\n')
 }
