@@ -5,11 +5,11 @@ import (
 	p "piscine"
 )
 func main() {
-	fmt.Println(p.IterativeFractorial(1))
-	fmt.Println(p.IterativeFractorial(2))
-	fmt.Println(p.IterativeFractorial(3))
-	fmt.Println(p.IterativeFractorial(4))
-	fmt.Println(p.IterativeFractorial(5))
-	fmt.Println(p.IterativeFractorial(6))
-	fmt.Println(p.IterativeFractorial(7))
+	fmt.Println(p.Compare("Hello", "Hello"))
+	fmt.Println(p.Compare("Hello", "Hell"))
+	fmt.Println(p.Compare("abc", "bc"))
+	fmt.Println(p.Compare("bc", "abc"))
+	fmt.Println(p.Compare("abc", "acb"))
+	fmt.Println(p.Compare("👋😀🤚🌐", "👋😀🤚🌐"))
+	fmt.Println(p.Compare("👋😀🤚🌐", "👋😀👋🌐"))
 }
