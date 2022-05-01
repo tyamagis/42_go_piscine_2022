@@ -1,15 +1,29 @@
 package main
 
 import (
-	"fmt"
 	p "piscine"
 )
 func main() {
-	fmt.Println(p.IterativeFractorial(1))
-	fmt.Println(p.IterativeFractorial(2))
-	fmt.Println(p.IterativeFractorial(3))
-	fmt.Println(p.IterativeFractorial(4))
-	fmt.Println(p.IterativeFractorial(5))
-	fmt.Println(p.IterativeFractorial(6))
-	fmt.Println(p.IterativeFractorial(7))
+	nb := 127
+	p.PrintNbrBase(nb, "0123456789")
+	p.PrintNbrBase(nb, "01")
+	p.PrintNbrBase(nb, "01234567")
+	p.PrintNbrBase(nb, "0123456789abcdef")
+	p.PrintNbrBase(nb, "abcdefghij")
+	p.PrintNbrBase(nb, ".,/;:*")
+
+	nb = -128
+	p.PrintNbrBase(nb, "0123456789")
+	p.PrintNbrBase(nb, "01")
+	p.PrintNbrBase(nb, "01234567")
+	p.PrintNbrBase(nb, "0123456789abcdef")
+	p.PrintNbrBase(nb, "abcdefghij")
+	p.PrintNbrBase(nb, ".,/;:*")
+
+	p.PrintNbrBase(nb, "aa")
+	p.PrintNbrBase(nb, "a1234567a89")
+	p.PrintNbrBase(nb, "a+")
+	p.PrintNbrBase(nb, "a-")
+	p.PrintNbrBase(nb, "a")
+ 	p.PrintNbrBase(nb, "")
 }

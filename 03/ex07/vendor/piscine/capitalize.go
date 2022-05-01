@@ -4,9 +4,27 @@ func isLower(r rune) bool {
 	return (r >= 'a' && r <= 'z')
 }
 
-func isTop(s string, i int) bool {
-	if i == 0 {
+func isUpper(r rune) bool {
+	return (r >= 'A' && r <= 'Z')
+}
+
+func isAlpha(r rune) bool {
+	return (isLower(r) || isUpper(r))
+}
+
+func isDigit(r rune) bool {
+	return (r >= '0' && r <= '9')
+}
+
+func isAlNum(r rune) bool {
+	return (isDigit(r) || isAlpha(r))
+}
+
+func isTop(r []rune, i int) bool {
+	if i == 0 || !isAlNum(r[i-1]) {
 		return true
+	} else {
+		return false
 	}
 }
 
@@ -16,9 +34,10 @@ func toUpper(r rune) rune {
 
 func Capitalize(s string) string {
 	r := []rune(s)
-	for i, c := range s {
-		if (isTop(s, i) && isLower(c)) {
-			r[i] = ToUpper(c)
+	for i, rc := range r {
+		if isTop(r, i) && isLower(rc) {
+			r[i] = toUpper(rc)
 		}
 	}
+	return string(r)
 }

@@ -4,12 +4,11 @@ import (
 	"fmt"
 	p "piscine"
 )
+
 func main() {
-	fmt.Println(p.IterativeFractorial(1))
-	fmt.Println(p.IterativeFractorial(2))
-	fmt.Println(p.IterativeFractorial(3))
-	fmt.Println(p.IterativeFractorial(4))
-	fmt.Println(p.IterativeFractorial(5))
-	fmt.Println(p.IterativeFractorial(6))
-	fmt.Println(p.IterativeFractorial(7))
+	fmt.Println(p.IsNumeric("0012345600"))
+	fmt.Println(p.IsNumeric("0.02"))
+	fmt.Println(p.IsNumeric("+123"))
+	fmt.Println(p.IsNumeric("-123"))
+	fmt.Println(p.IsNumeric("7/5"))
 }
