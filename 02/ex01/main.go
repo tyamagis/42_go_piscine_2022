@@ -6,14 +6,14 @@ import (
 )
 
 func main() {
-	fmt.Println(p.RecursiveFractorial(0))
-	fmt.Println(p.RecursiveFractorial(1))
-	fmt.Println(p.RecursiveFractorial(2))
-	fmt.Println(p.RecursiveFractorial(3))
-	fmt.Println(p.RecursiveFractorial(4))
-	fmt.Println(p.RecursiveFractorial(5))
+	fmt.Println(p.RecursiveFactorial(0))
+	fmt.Println(p.RecursiveFactorial(1))
+	fmt.Println(p.RecursiveFactorial(2))
+	fmt.Println(p.RecursiveFactorial(3))
+	fmt.Println(p.RecursiveFactorial(4))
+	fmt.Println(p.RecursiveFactorial(5))
 	
-	fmt.Println(p.RecursiveFractorial(-1))
-	fmt.Println(p.RecursiveFractorial(20))
-	fmt.Println(p.RecursiveFractorial(21	))
+	fmt.Println(p.RecursiveFactorial(-1))
+	fmt.Println(p.RecursiveFactorial(20))
+	fmt.Println(p.RecursiveFactorial(21))
 }
