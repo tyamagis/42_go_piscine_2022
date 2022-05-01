@@ -27,7 +27,7 @@ func Index(hs, ndl string) int {
 	}
 	for i := 0; i <= len_hs - len_ndl; i++ {
 		if RuneCmp(r_hs, r_ndl, i) {
-			return i + 1
+			return i
 		}
 	}
 	return -1

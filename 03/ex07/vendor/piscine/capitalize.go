@@ -21,11 +21,7 @@ func isAlNum(r rune) bool {
 }
 
 func isTop(r []rune, i int) bool {
-	if i == 0 || !isAlNum(r[i-1]) {
-		return true
-	} else {
-		return false
-	}
+	return (i == 0 || !isAlNum(r[i-1]))
 }
 
 func toUpper(r rune) rune {

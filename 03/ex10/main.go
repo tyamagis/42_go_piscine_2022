@@ -5,7 +5,7 @@ import (
 	p "piscine"
 )
 func main() {
-	fmt.Println(p.IsLower("HELLO"))
-	fmt.Println(p.IsLower("Hello"))
-	fmt.Println(p.IsLower("HELLO!"))
+	fmt.Println(p.IsUpper("HELLO"))
+	fmt.Println(p.IsUpper("Hello"))
+	fmt.Println(p.IsUpper("HELLO!"))
 }
