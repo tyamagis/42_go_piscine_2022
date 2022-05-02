@@ -4,7 +4,7 @@ import (
 	p "piscine"
 )
 func main() {
-	nb := 127
+	nb := 0
 	p.PrintNbrBase(nb, "0123456789")
 	p.PrintNbrBase(nb, "01")
 	p.PrintNbrBase(nb, "01234567")

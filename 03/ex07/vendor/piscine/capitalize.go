@@ -28,11 +28,18 @@ func toUpper(r rune) rune {
 	return rune(r - 'a' + 'A')
 }
 
+func toLower(r rune) rune {
+	return rune(r - 'A' + 'a')
+}
+
 func Capitalize(s string) string {
 	r := []rune(s)
 	for i, rc := range r {
 		if isTop(r, i) && isLower(rc) {
 			r[i] = toUpper(rc)
+		}
+		if !isTop(r, i) && isUpper(rc){
+			r[i] = toLower(rc)
 		}
 	}
 	return string(r)

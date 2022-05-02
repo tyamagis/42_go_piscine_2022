@@ -5,5 +5,5 @@ import (
 	p "piscine"
 )
 func main() {
-	fmt.Println(p.Capitalize("a bb ccc dddd! eeffgg hh-hh,hh, iiii. j+jj+jjj = kk5k6k7k"))
+	fmt.Println(p.Capitalize("a bb cCC ddDd! eEFfgG hh-hh,hh, IIii. j+jj+jjj = kK5K6K7K"))
 }

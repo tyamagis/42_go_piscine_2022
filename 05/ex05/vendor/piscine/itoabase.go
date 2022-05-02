@@ -1,14 +1,5 @@
 package piscine
 
-import "ft"
-
-func printStr(s string) {
-	for _, c :=range s {
-		ft.PrintRune(c)
-	}
-	ft.PrintRune('\n')
-}
-
 func swap(a, b *rune) {
 	*a, *b = *b, *a
 }
@@ -16,8 +7,8 @@ func swap(a, b *rune) {
 func strRev(s string) string {
 	l := strLen(s)
 	rev := []rune(s)
-	for i := 0; i < l / 2; i++ {
-		swap(&rev[i], &rev[l - 1 - i])
+	for i := 0; i < l/2; i++ {
+		swap(&rev[i], &rev[l-1-i])
 	}
 	return string(rev)
 }
@@ -33,7 +24,7 @@ func strLen(s string) int {
 func isDup(s string) bool {
 	for i, ci := range s {
 		for j, cj := range s {
-			if (i <= j) {
+			if i <= j {
 				continue
 			} else if ci == cj {
 				return true
@@ -45,7 +36,7 @@ func isDup(s string) bool {
 
 func isSign(s string) bool {
 	for _, c := range s {
-		if (c == '+' || c == '-') {
+		if c == '+' || c == '-' {
 			return true
 		}
 	}
@@ -63,31 +54,27 @@ func isBaseValid(base string) bool {
 	return true
 }
 
-func PrintNbrBase(nb int, base string) {
+func ItoaBase(nb int, base string) string {
 	rb := []rune(base)
-	if isBaseValid(base) == false {
-		printStr("NV")
-		return
+	if isBaseValid(base) == false || nb == 0 {
+		return "0"
 	}
 	base_n := strLen(base)
 	str := ""
 	sign := 1
-	if (nb < 0) {
+	if nb < 0 {
 		sign = -1
 	}
-	for {
+	for nb != 0 {
 		mod := nb % base_n
-		if (mod < 0) {
+		if mod < 0 {
 			mod *= -1
 		}
 		str += string(rb[mod])
 		nb /= base_n
-		if (nb == 0) {
-			break
-		}
 	}
 	if sign == -1 {
 		str += string('-')
 	}
-	printStr(strRev(str))
+	return strRev(str)
 }

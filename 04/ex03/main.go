@@ -5,6 +5,6 @@ import (
 	p "piscine"
 )
 
-func main(){
+func main() {
 	p.SortParams(os.Args)
 }
