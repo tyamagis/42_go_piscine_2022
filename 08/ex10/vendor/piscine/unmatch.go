@@ -9,9 +9,9 @@ func slLen(a []int) (l int) {
 
 func Unmatch(a []int) int {
 	l := slLen(a)
-	top := a[0]
-	for range a {
-
+	pair := 0
+	for i, ia := range a {
+		
 	}
 }
 

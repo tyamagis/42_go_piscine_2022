@@ -15,7 +15,7 @@ func PrintStr(s string) {
 func DisplayFile(filename string) {
 	data, err := os.ReadFile(filename)
 	if err != nil {
-		PrintStr("Error >> reading file failed. retry.")
+		PrintStr(err.Error())
 		return
 	}
 	PrintStr(string(data))
