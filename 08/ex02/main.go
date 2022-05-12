@@ -6,5 +6,5 @@ import (
 )
 
 func main(){
-	p.Cat(os.Args)
+	p.ComCheck(os.Args[1:])
 }

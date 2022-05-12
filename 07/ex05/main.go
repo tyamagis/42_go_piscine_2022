@@ -5,6 +5,6 @@ import (
 	p "piscine"
 )
 
-func main(){
-	p.Cat(os.Args)
+func main() {
+	p.Doop(os.Args)
 }
