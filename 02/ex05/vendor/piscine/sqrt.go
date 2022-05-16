@@ -5,12 +5,11 @@ func Sqrt(nb int) int {
 		return 0
 	}
 	ans := 1
-	for ans < nb / ans {
+	for ans <= nb/ans {
 		ans++
 	}
-	if ans * ans == nb {
-		return ans
-	} else {
-		return 0
+	if (ans-1)*(ans-1) == nb {
+		return ans-1
 	}
+	return ans
 }

@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	for i := -3; i <= 16; i++ {
+	for i := -3; i <= 50; i++ {
 		fmt.Println("sqrt(", i, ") =", p.Sqrt(i))
 	}
 }

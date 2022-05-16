@@ -2,19 +2,177 @@ package main
 
 import "fmt"
 
+type Core struct {
+	Minos []int
+}
+const MinoTypes = 19
+const (
+	MinoO = iota
+	MinoLU
+	MinoLR
+	MinoLD
+	MinoLL
+	MinoJU
+	MinoJR
+	MinoJD
+	MinoJL
+	MinoTU
+	MinoTR
+	MinoTD
+	MinoTL
+	MinoIU
+	MinoIR
+	MinoSU
+	MinoSR
+	MinoZU
+	MinoZR
+)
+func NewCore() *Core {
+	return &Core{
+		Minos: []int{
+			MinoO,
+			MinoLU,
+			MinoLR,
+			MinoLD,
+			MinoLL,
+			MinoJU,
+			MinoJR,
+			MinoJD,
+			MinoJL,
+			MinoTU,
+			MinoTR,
+			MinoTD,
+			MinoTL,
+			MinoIU,
+			MinoIR,
+			MinoSU,
+			MinoSR,
+			MinoZU,
+			MinoZR,
+		},
+	}
+}
+
+func Minos(minoType int) []string {
+	var str []string
+	switch minoType {
+	case MinoO:
+		str = append(str,
+			"##",
+			"##")
+	case MinoLU:
+		str = append(str,
+			"#.",
+			"#.",
+			"##")
+	case MinoLR:
+		str = append(str,
+			"###",
+			"#..")
+	case MinoLD:
+		str = append(str,
+			"##",
+			".#",
+			".#")
+	case MinoLL:
+		str = append(str,
+			"..#",
+			"###")
+	case MinoJU:
+		str = append(str,
+			".#",
+			".#",
+			"##")
+	case MinoJR:
+		str = append(str,
+			"#..",
+			"###")
+	case MinoJD:
+		str = append(str,
+			"##",
+			"#.",
+			"#.")
+	case MinoJL:
+		str = append(str,
+			"###",
+			"#..")
+	case MinoTU:
+		str = append(str,
+			"###",
+			".#.")
+	case MinoTR:
+		str = append(str,
+			".#",
+			"##",
+			".#")
+	case MinoTD:
+		str = append(str,
+			".#.",
+			"###")
+	case MinoTL:
+		str = append(str,
+			"#.",
+			"##",
+			"#.")
+	case MinoIU:
+		str = append(str,
+			"#",
+			"#",
+			"#",
+			"#")
+	case MinoIR:
+		str = append(str,
+			"####")
+	case MinoSU:
+		str = append(str,
+			".##",
+			"##.")
+	case MinoSR:
+		str = append(str,
+			"#.",
+			"##",
+			".#")
+	case MinoZU:
+		str = append(str,
+			"##.",
+			".##")
+	case MinoZR:
+		str = append(str,
+			".#",
+			"##",
+			"#.")
+	}
+	return str
+}
+
+func TransMinos(w,h int, mino []string) []string {
+	r := 4 - w - len(mino[0])
+	for i := range mino {
+		for j := 0; j < w; j++ {
+			mino[i] = "." + mino[i]
+		}
+		for j := 0; j < r; j++ {
+			mino[i] += "."
+		}
+		mino[i] += "\n"
+	}
+	var tmp []string
+	r = 4 - h - len(mino)
+	for i := 0; i < h; i++ {
+		tmp = append(tmp, "....\n")
+	}
+	for i := range mino {
+		tmp = append(tmp, mino[i])
+	}
+	for i := 0; i < r; i++ {
+		tmp = append(tmp, "....\n")
+	}
+	tmp[3] += "\n"
+	return tmp
+}
+
 func main() {
-	src := [][]int {
-		{0,0,0},
-		{1,1,1},
-		{2,2,2},
+	for i := 0; i < 19; i++ {
+		fmt.Println(TransMinos(0,2,Minos(i)))
 	}
-	dst := make([][]int, len(src))
-	for i, _ := range src {
-		dst[i] = append(dst[i], src[i]...)
-	}
-	fmt.Println(src)
-	fmt.Println(dst)
-	src[1][1] = 5
-	fmt.Println(src)
-	fmt.Println(dst)
 }
