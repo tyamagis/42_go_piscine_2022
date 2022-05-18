@@ -1,178 +1,79 @@
 package main
 
-import "fmt"
-
-type Core struct {
-	Minos []int
-}
-const MinoTypes = 19
-const (
-	MinoO = iota
-	MinoLU
-	MinoLR
-	MinoLD
-	MinoLL
-	MinoJU
-	MinoJR
-	MinoJD
-	MinoJL
-	MinoTU
-	MinoTR
-	MinoTD
-	MinoTL
-	MinoIU
-	MinoIR
-	MinoSU
-	MinoSR
-	MinoZU
-	MinoZR
+import (
+	"fmt"
+	"os"
 )
-func NewCore() *Core {
-	return &Core{
-		Minos: []int{
-			MinoO,
-			MinoLU,
-			MinoLR,
-			MinoLD,
-			MinoLL,
-			MinoJU,
-			MinoJR,
-			MinoJD,
-			MinoJL,
-			MinoTU,
-			MinoTR,
-			MinoTD,
-			MinoTL,
-			MinoIU,
-			MinoIR,
-			MinoSU,
-			MinoSR,
-			MinoZU,
-			MinoZR,
-		},
+
+func strLen(s string) int {
+	len := 0
+	for range s {
+		len++
 	}
+	return len
 }
 
-func Minos(minoType int) []string {
-	var str []string
-	switch minoType {
-	case MinoO:
-		str = append(str,
-			"##",
-			"##")
-	case MinoLU:
-		str = append(str,
-			"#.",
-			"#.",
-			"##")
-	case MinoLR:
-		str = append(str,
-			"###",
-			"#..")
-	case MinoLD:
-		str = append(str,
-			"##",
-			".#",
-			".#")
-	case MinoLL:
-		str = append(str,
-			"..#",
-			"###")
-	case MinoJU:
-		str = append(str,
-			".#",
-			".#",
-			"##")
-	case MinoJR:
-		str = append(str,
-			"#..",
-			"###")
-	case MinoJD:
-		str = append(str,
-			"##",
-			"#.",
-			"#.")
-	case MinoJL:
-		str = append(str,
-			"###",
-			"#..")
-	case MinoTU:
-		str = append(str,
-			"###",
-			".#.")
-	case MinoTR:
-		str = append(str,
-			".#",
-			"##",
-			".#")
-	case MinoTD:
-		str = append(str,
-			".#.",
-			"###")
-	case MinoTL:
-		str = append(str,
-			"#.",
-			"##",
-			"#.")
-	case MinoIU:
-		str = append(str,
-			"#",
-			"#",
-			"#",
-			"#")
-	case MinoIR:
-		str = append(str,
-			"####")
-	case MinoSU:
-		str = append(str,
-			".##",
-			"##.")
-	case MinoSR:
-		str = append(str,
-			"#.",
-			"##",
-			".#")
-	case MinoZU:
-		str = append(str,
-			"##.",
-			".##")
-	case MinoZR:
-		str = append(str,
-			".#",
-			"##",
-			"#.")
+func isSep(s, sep []rune, i int) bool {
+	if i > strLen(string(s))-strLen(string(sep)) {
+		return false
 	}
-	return str
+	return string(s[i:i+strLen(string(sep))]) == string(sep)
 }
 
-func TransMinos(w,h int, mino []string) []string {
-	r := 4 - w - len(mino[0])
-	for i := range mino {
-		for j := 0; j < w; j++ {
-			mino[i] = "." + mino[i]
+func wordLen(s, sep []rune, i int) int {
+	if strLen(string(sep)) == 0 {
+		return 2
+	}
+	len := 0
+	for i+len < strLen(string(s)) {
+		if isSep(s, sep, i+len) {
+			break
 		}
-		for j := 0; j < r; j++ {
-			mino[i] += "."
+		len++
+	}
+	return len
+}
+
+func Split(s, sep string) []string {
+	var ret []string
+	rs, rsep := []rune(s), []rune(sep)
+	s_len, sep_len := strLen(s), strLen(sep)
+	i, end := 0, 0
+	for i < s_len {
+		if isSep(rs, rsep, i) {
+			i += sep_len
+			if sep_len == 0 {
+				ret = append(ret, string(rs[i:i+1]))
+				i++
+			}
+		} else {
+			end = wordLen(rs, rsep, i)
+			ret = append(ret, string(rs[i:i+end]))
+			i = i + end
 		}
-		mino[i] += "\n"
 	}
-	var tmp []string
-	r = 4 - h - len(mino)
-	for i := 0; i < h; i++ {
-		tmp = append(tmp, "....\n")
+	return ret
+}
+
+func BufTrim(buf []byte) string {
+	i := 0
+	for buf[i] != 0 {
+		i++
 	}
-	for i := range mino {
-		tmp = append(tmp, mino[i])
+	return string(buf[0:i])
+}
+
+func ReadStdin() []string {
+	buf := make([]byte, 1024)
+	str := ""
+	rsize := 1
+	for rsize != 0 {
+		rsize, _ = os.Stdin.Read(buf)
+		str += BufTrim(buf)
 	}
-	for i := 0; i < r; i++ {
-		tmp = append(tmp, "....\n")
-	}
-	tmp[3] += "\n"
-	return tmp
+	return Split(str, "\n")
 }
 
 func main() {
-	for i := 0; i < 19; i++ {
-		fmt.Println(TransMinos(0,2,Minos(i)))
-	}
+	fmt.Println(ReadStdin())
 }

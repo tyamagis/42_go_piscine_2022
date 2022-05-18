@@ -25,10 +25,14 @@ func isEven(nbr int) bool {
 	}
 }
 
-// lengyhOfArg -> len(os.Args)
+// lengyhOfArg -> len(os.Args) --> count lengthOfArg
 // EvenMsg, OddMsg -> "~~"
 func main() {
-	if isEven(len(os.Args)) == true {
+	lengthOfArg := 0
+	for range os.Args {
+		lengthOfArg++
+	}
+	if isEven(lengthOfArg) == true {
 		printStr("I have an even number of arguments")
 	} else {
 		printStr("I have an odd number of arguments")
