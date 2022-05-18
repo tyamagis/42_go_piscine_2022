@@ -9,13 +9,12 @@ func PrintStr(s string) {
 	for _, c := range s {
 		ft.PrintRune(c)
 	}
-	ft.PrintRune('\n')
 }
 
 func DisplayFile(filename string) {
 	data, err := os.ReadFile(filename)
 	if err != nil {
-		PrintStr(err.Error())
+		PrintStr(err.Error() + "\n")
 		return
 	}
 	PrintStr(string(data))
