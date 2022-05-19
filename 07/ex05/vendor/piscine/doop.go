@@ -40,7 +40,6 @@ func multi(a, b int) {
 	}
 	max := int((^uint(0))>>1)
 	min := max + 1
-	fmt.Println(a, b, max, min)
 	if ((a>0 && b>0) || (a<0 && b<0)) && a > max/b {
 		return
 	} else if (a<0 && b>0) && a < min/b {
@@ -55,6 +54,7 @@ func multi(a, b int) {
 func div(a, b int) {
 	if b == 0 {
 		fmt.Println("No division by 0")
+		return
 	}
 	fmt.Println(a/b)
 }
@@ -62,6 +62,7 @@ func div(a, b int) {
 func mod(a, b int) {
 	if b == 0 {
 		fmt.Println("No modulo by 0")
+		return
 	}
 	fmt.Println(a%b)
 }
